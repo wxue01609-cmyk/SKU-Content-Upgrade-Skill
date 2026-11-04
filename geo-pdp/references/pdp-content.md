@@ -26,6 +26,11 @@
 - **概述段语料**：概述段 / 关键卖点同时写入 feed `description` 与 Product JSON-LD `description`，保证 AI 从任一入口读到同一份可引用描述；表述中的数字必须可追到证据账本。
 - **不做**：伪造评论、虚构用户、写未核实的认证/防水/续航等参数、写“限时”“仅剩”类压力话术。
 
+## 交付形态：原页 1:1 复刻
+- 改后详情页 `pdp.html` 以抓取的原页 HTML 为基底**整页 1:1 复刻**（布局、图片、样式、价格、评论区、页脚全保留），只替换文字内容：`<title>`、meta description、og/twitter 标题与描述、页面第一个 `<h1>`、Product JSON-LD 的 `name`/`description`。
+- 原页 FAQ 的问答质量好时保留原问答；无 FAQ 的页面在方案里标注，不强行插入结构（保持 1:1）。
+- 抓取无原始 HTML（JS 渲染/失败）时回退模板页并在 manifest 标记 `pdp_replica=false`。
+
 ## 三、交付物
 `deliverables/<change_id>/`：
 - `before_after.md`：逐模块对照表（模块 | 现状 | 改后 | 改动原因 | 依据的 claim_id）。现状取自 PDP 导出或线上页面抓取，注明日期。
